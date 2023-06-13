@@ -2,6 +2,9 @@
 
 namespace JT808.Gateway.Services
 {
+    /// <summary>
+    /// 会话通知（在线/离线）服务
+    /// </summary>
     public class JT808SessionNoticeService
     {
         protected ILogger logger { get; }

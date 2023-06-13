@@ -7,6 +7,9 @@ using System.Threading;
 
 namespace JT808.Gateway.Session
 {
+    /// <summary>
+    /// JT808 UDP 会话
+    /// </summary>
     public class JT808UdpSession: IJT808Session
     {
         public JT808UdpSession(Socket socket, EndPoint sender)

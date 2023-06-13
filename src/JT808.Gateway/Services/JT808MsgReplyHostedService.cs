@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.Services
 {
+    /// <summary>
+    /// 应答数据消费托管服务
+    /// </summary>
     internal class JT808MsgReplyHostedService : IHostedService
     {
         private readonly JT808SessionManager JT808SessionManager;

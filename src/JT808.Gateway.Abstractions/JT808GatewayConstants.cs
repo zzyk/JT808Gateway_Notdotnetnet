@@ -1,12 +1,33 @@
 ﻿namespace JT808.Gateway.Abstractions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class JT808GatewayConstants
     {
+        /// <summary>
+        /// 在线
+        /// </summary>
         public const string SessionOnline= "JT808SessionOnline";
+        /// <summary>
+        /// 离线
+        /// </summary>
         public const string SessionOffline = "JT808SessionOffline";
+        /// <summary>
+        /// 会话主题
+        /// </summary>
         public const string SessionTopic = "jt808session";
+        /// <summary>
+        /// 消息主题
+        /// </summary>
         public const string MsgTopic = "jt808msgdefault";
+        /// <summary>
+        /// 消息回复主题
+        /// </summary>
         public const string MsgReplyTopic = "jt808msgreplydefault";
+        /// <summary>
+        /// JT808 web api
+        /// </summary>
         public static class JT808WebApiRouteTable
         {
             public const string RouteTablePrefix = "/jt808api";

@@ -14,9 +14,13 @@ namespace JT808.Gateway.Services
     public class JT808BlacklistManager
     {
         private ConcurrentDictionary<string, byte> Blacklist;
-
+        /// <summary>
+        /// 黑名单文件名称
+        /// </summary>
         private const string BlacklistFileName = "blacklist.ini";
-
+        /// <summary>
+        /// 侦听文件系统更改通知，并在目录或目录中的文件发生更改时引发事件
+        /// </summary>
         private FileSystemWatcher fileSystemWatcher;
 
         private string FullPath;
@@ -44,7 +48,10 @@ namespace JT808.Gateway.Services
                 Init(e.FullPath);
             };
         }
-
+        /// <summary>
+        /// 初始化黑名单
+        /// </summary>
+        /// <param name="fullPath"></param>
         private void Init(string fullPath)
         {
             var values = File.ReadAllLines(fullPath);

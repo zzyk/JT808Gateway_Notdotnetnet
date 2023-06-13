@@ -87,6 +87,59 @@
             <param name="jT808MsgReplyProducer"></param>
             <param name="jT808MsgConsumer"></param>
         </member>
+        <member name="T:JT808.Gateway.HostedServices.JT808SessionNoticeHostedService">
+            <summary>
+            会话通知（在线/离线）托管服务
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.HostedServices.JT808SessionNoticeHostedService.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            异步开始
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.HostedServices.JT808SessionNoticeHostedService.StopAsync(System.Threading.CancellationToken)">
+            <summary>
+            异步停止
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JT808.Gateway.HostedServices.JT808TransmitHostedService">
+            <summary>
+            转发托管服务
+            </summary>
+        </member>
+        <member name="F:JT808.Gateway.HostedServices.JT808TransmitHostedService.jT808TransmitService">
+            <summary>
+            转发服务
+            </summary>
+        </member>
+        <member name="F:JT808.Gateway.HostedServices.JT808TransmitHostedService.jT808MsgConsumer">
+            <summary>
+            数据消费接口
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.HostedServices.JT808TransmitHostedService.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            异步开始
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.HostedServices.JT808TransmitHostedService.StopAsync(System.Threading.CancellationToken)">
+            <summary>
+            异步停止
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JT808.Gateway.Internal.JT808GatewayBuilderDefault">
+            <summary>
+            JT808网关默认构造器
+            </summary>
+        </member>
         <member name="T:JT808.Gateway.JT808GatewayExtensions">
             <summary>
             JT808网关注册扩展
@@ -166,6 +219,26 @@
             808 tcp服务器
             </summary>
         </member>
+        <member name="F:JT808.Gateway.JT808TcpServer.MessageHandler">
+            <summary>
+            通用消息处理程序
+            </summary>
+        </member>
+        <member name="F:JT808.Gateway.JT808TcpServer.MsgProducer">
+            <summary>
+            数据生产接口
+            </summary>
+        </member>
+        <member name="F:JT808.Gateway.JT808TcpServer.MsgReplyLoggingProducer">
+            <summary>
+            网关应答数据日志生产接口
+            </summary>
+        </member>
+        <member name="F:JT808.Gateway.JT808TcpServer.MessageReceiveCounter">
+            <summary>
+            接收消息数
+            </summary>
+        </member>
         <member name="M:JT808.Gateway.JT808TcpServer.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{JT808.Gateway.Abstractions.Configurations.JT808Configuration},JT808.Gateway.Abstractions.IJT808MsgProducer,JT808.Gateway.Abstractions.IJT808MsgReplyLoggingProducer,JT808.Gateway.Abstractions.JT808MessageHandler,JT808.Protocol.IJT808Config,Microsoft.Extensions.Logging.ILoggerFactory,JT808.Gateway.Session.JT808SessionManager,JT808.Gateway.Services.JT808BlacklistManager)">
             <summary>
             初始化服务注册
@@ -179,12 +252,42 @@
             <param name="jT808SessionManager"></param>
             <param name="jT808BlacklistManager"></param>
         </member>
+        <member name="M:JT808.Gateway.JT808TcpServer.InitServer">
+            <summary>
+            初始化JT808 TCP服务
+            </summary>
+        </member>
         <member name="M:JT808.Gateway.JT808TcpServer.StartAsync(System.Threading.CancellationToken)">
             <summary>
-            
+            开始异步
             </summary>
             <param name="cancellationToken"></param>
             <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.JT808TcpServer.FillPipeAsync(JT808.Gateway.Session.JT808TcpSession,System.IO.Pipelines.PipeWriter)">
+            <summary>
+            异步填充到管道
+            </summary>
+            <param name="session"></param>
+            <param name="writer">定义提供可将数据写入到的管道的类</param>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.JT808TcpServer.ReadPipeAsync(JT808.Gateway.Session.JT808TcpSession,System.IO.Pipelines.PipeReader)">
+            <summary>
+            
+            </summary>
+            <param name="session"></param>
+            <param name="reader">定义提供对管道读取端的访问权限的类。</param>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.JT808TcpServer.ReaderBuffer(System.Buffers.ReadOnlySequence{System.Byte}@,JT808.Gateway.Session.JT808TcpSession,System.SequencePosition@)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="session"></param>
+            <param name="consumed"></param>
+            <exception cref="T:System.ArgumentException"></exception>
         </member>
         <member name="M:JT808.Gateway.JT808TcpServer.StopAsync(System.Threading.CancellationToken)">
             <summary>
@@ -292,10 +395,26 @@
             SIM黑名单管理
             </summary>
         </member>
+        <member name="F:JT808.Gateway.Services.JT808BlacklistManager.BlacklistFileName">
+            <summary>
+            黑名单文件名称
+            </summary>
+        </member>
+        <member name="F:JT808.Gateway.Services.JT808BlacklistManager.fileSystemWatcher">
+            <summary>
+            侦听文件系统更改通知，并在目录或目录中的文件发生更改时引发事件
+            </summary>
+        </member>
         <member name="M:JT808.Gateway.Services.JT808BlacklistManager.#ctor">
             <summary>
             
             </summary>
+        </member>
+        <member name="M:JT808.Gateway.Services.JT808BlacklistManager.Init(System.String)">
+            <summary>
+            初始化黑名单
+            </summary>
+            <param name="fullPath"></param>
         </member>
         <member name="M:JT808.Gateway.Services.JT808BlacklistManager.Contains(System.String)">
             <summary>
@@ -322,20 +441,40 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:JT808.Gateway.Services.JT808MsgReplyHostedService">
+            <summary>
+            应答数据消费托管服务
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Services.JT808SessionNoticeService">
+            <summary>
+            会话通知（在线/离线）服务
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Services.JT808TransmitService">
+            <summary>
+            转发服务
+            </summary>
+        </member>
+        <member name="F:JT808.Gateway.Services.JT808TransmitService.optionsMonitor">
+            <summary>
+            监控通知选项
+            </summary>
+        </member>
         <member name="M:JT808.Gateway.Services.JT808TransmitService.SendAsync(System.ValueTuple{System.String,System.Byte[]})">
             <summary>
-            
+            异步发送转发数据
             </summary>
             <param name="parameter"></param>
         </member>
         <member name="M:JT808.Gateway.Services.JT808TransmitService.Stop">
             <summary>
-            
+            停止转发
             </summary>
         </member>
         <member name="M:JT808.Gateway.Services.JT808TransmitService.InitialDispatcherClient">
             <summary>
-            
+            初始化调度(分发)客户端
             </summary>
         </member>
         <member name="M:JT808.Gateway.Services.JT808TransmitService.InitRemoteServsers">
@@ -356,10 +495,27 @@
             </summary>
             <param name="lastRemoteServers"></param>
         </member>
+        <member name="T:JT808.Gateway.Services.JT808UdpReceiveTimeoutHostedService">
+            <summary>
+            JT808 UDP接收超时托管服务
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Services.JT808UdpReceiveTimeoutHostedService.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            异步执行
+            </summary>
+            <param name="stoppingToken"></param>
+            <returns></returns>
+        </member>
         <member name="T:JT808.Gateway.Session.JT808SessionManager">
             <summary>
-            
+            会话管理
             <remark>不支持变态类型:既发TCP和UDP</remark>
+            </summary>
+        </member>
+        <member name="F:JT808.Gateway.Session.JT808SessionManager.SessionProducer">
+            <summary>
+            会话生产者
             </summary>
         </member>
         <member name="P:JT808.Gateway.Session.JT808SessionManager.Sessions">
@@ -402,14 +558,14 @@
         </member>
         <member name="M:JT808.Gateway.Session.JT808SessionManager.TryLink(System.String,JT808.Gateway.Abstractions.IJT808Session)">
             <summary>
-            
+            尝试链接
             </summary>
             <param name="terminalPhoneNo"></param>
             <param name="session"></param>
         </member>
         <member name="M:JT808.Gateway.Session.JT808SessionManager.TryLink(System.String,System.Net.Sockets.Socket,System.Net.EndPoint)">
             <summary>
-            
+            尝试连接
             </summary>
             <param name="terminalPhoneNo"></param>
             <param name="socket"></param>
@@ -418,14 +574,115 @@
         </member>
         <member name="M:JT808.Gateway.Session.JT808SessionManager.TryAdd(JT808.Gateway.Abstractions.IJT808Session)">
             <summary>
-            
+            尝试添加
             </summary>
             <param name="session"></param>
             <returns></returns>
         </member>
+        <member name="M:JT808.Gateway.Session.JT808SessionManager.TrySendByTerminalPhoneNoAsync(System.String,System.Byte[])">
+            <summary>
+            根据sim卡号异步发送
+            </summary>
+            <param name="terminalPhoneNo"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.Session.JT808SessionManager.TrySendBySessionIdAsync(System.String,System.Byte[])">
+            <summary>
+            根据会话Id异步发送
+            </summary>
+            <param name="sessionId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.Session.JT808SessionManager.RemoveByTerminalPhoneNo(System.String)">
+            <summary>
+            根据终端Sim卡号 移除会话
+            </summary>
+            <param name="terminalPhoneNo"></param>
+        </member>
+        <member name="M:JT808.Gateway.Session.JT808SessionManager.RemoveBySessionId(System.String)">
+            <summary>
+            根据会话Id移除会话
+            </summary>
+            <param name="sessionId"></param>
+        </member>
+        <member name="M:JT808.Gateway.Session.JT808SessionManager.GetTcpAll(System.Func{JT808.Gateway.Abstractions.IJT808Session,System.Boolean})">
+            <summary>
+            获取所有TCP会话
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.Session.JT808SessionManager.GetTcpByPage(System.Func{JT808.Gateway.Abstractions.IJT808Session,System.Boolean})">
+            <summary>
+            分页获取所有TCP会话
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.Session.JT808SessionManager.GetUdpAll(System.Func{JT808.Gateway.Abstractions.IJT808Session,System.Boolean})">
+            <summary>
+            获取所有UDP会话
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.Session.JT808SessionManager.GetUdpByPage(System.Func{JT808.Gateway.Abstractions.IJT808Session,System.Boolean})">
+            <summary>
+            分页获取所有UDP会话
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JT808.Gateway.Session.JT808TcpSession">
+            <summary>
+            JT808 TCP会话
+            </summary>
+        </member>
         <member name="P:JT808.Gateway.Session.JT808TcpSession.TerminalPhoneNo">
             <summary>
             终端手机号
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Session.JT808TcpSession.ActiveTime">
+            <summary>
+            活动时间
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Session.JT808TcpSession.StartTime">
+            <summary>
+            起始时间
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Session.JT808TcpSession.TransportProtocolType">
+            <summary>
+            传输协议
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Session.JT808TcpSession.SessionID">
+            <summary>
+            会话ID
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Session.JT808TcpSession.Client">
+            <summary>
+            Socket
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Session.JT808TcpSession.ReceiveTimeout">
+            <summary>
+            接收超时
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Session.JT808TcpSession.RemoteEndPoint">
+            <summary>
+            远程主机
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Session.JT808UdpSession">
+            <summary>
+            JT808 UDP 会话
             </summary>
         </member>
         <member name="P:JT808.Gateway.Session.JT808UdpSession.TerminalPhoneNo">

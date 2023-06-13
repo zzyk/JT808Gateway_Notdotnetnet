@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.Abstractions
 {
+    /// <summary>
+    /// JT808 数据生产接口（网关将接收到的数据发送到队列）
+    /// </summary>
     public interface IJT808MsgProducer : IJT808PubSub, IDisposable
     {
         /// <summary>

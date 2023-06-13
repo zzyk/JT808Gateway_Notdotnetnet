@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.Services
 {
+    /// <summary>
+    /// JT808 UDP接收超时托管服务
+    /// </summary>
     internal class JT808UdpReceiveTimeoutHostedService : BackgroundService
     {
         private readonly ILogger Logger;
@@ -28,7 +31,11 @@ namespace JT808.Gateway.Services
             Logger = loggerFactory.CreateLogger<JT808UdpReceiveTimeoutHostedService>();
             Configuration = jT808ConfigurationAccessor.Value;
         }
-
+        /// <summary>
+        /// 异步执行
+        /// </summary>
+        /// <param name="stoppingToken"></param>
+        /// <returns></returns>
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)

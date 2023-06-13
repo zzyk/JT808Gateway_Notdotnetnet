@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.Abstractions
 {
+    /// <summary>
+    /// 网关应答数据日志生产接口(将网关能解析到直接能下发的数据发送到队列)
+    /// </summary>
     public interface IJT808MsgReplyLoggingProducer : IJT808PubSub, IDisposable
     {
         /// <summary>

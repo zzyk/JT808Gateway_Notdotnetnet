@@ -10,7 +10,7 @@ using System.Text;
 namespace JT808.Gateway.WebApiClientTool
 {
     /// <summary>
-    /// 
+    /// JT808Http客户端扩展
     /// </summary>
     public static class JT808HttpClientExtensions
     {

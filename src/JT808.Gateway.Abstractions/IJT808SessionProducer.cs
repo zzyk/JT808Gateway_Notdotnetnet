@@ -9,7 +9,7 @@ namespace JT808.Gateway.Abstractions
     public interface IJT808SessionProducer : IJT808PubSub, IDisposable
     {
         /// <summary>
-        /// 
+        /// 异步生产消息
         /// </summary>
         /// <param name="notice"></param>
         /// <param name="terminalNo"></param>

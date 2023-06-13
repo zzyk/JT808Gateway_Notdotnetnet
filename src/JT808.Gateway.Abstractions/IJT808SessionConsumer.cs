@@ -12,7 +12,13 @@ namespace JT808.Gateway.Abstractions
     {
         void OnMessage(Action<(string Notice, string TerminalNo)> callback);
         CancellationTokenSource Cts { get; }
+        /// <summary>
+        /// 订阅
+        /// </summary>
         void Subscribe();
+        /// <summary>
+        /// 取消订阅
+        /// </summary>
         void Unsubscribe();
     }
 }

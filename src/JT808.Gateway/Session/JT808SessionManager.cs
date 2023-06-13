@@ -12,12 +12,15 @@ using Microsoft.Extensions.Logging;
 namespace JT808.Gateway.Session
 {
     /// <summary>
-    /// 
+    /// 会话管理
     /// <remark>不支持变态类型:既发TCP和UDP</remark>
     /// </summary>
     public class JT808SessionManager
     {
         private readonly ILogger logger;
+        /// <summary>
+        /// 会话生产者
+        /// </summary>
         private readonly IJT808SessionProducer SessionProducer;
         /// <summary>
         /// socket连接会话
@@ -83,7 +86,7 @@ namespace JT808.Gateway.Session
             }
         }
         /// <summary>
-        /// 
+        /// 尝试链接
         /// </summary>
         /// <param name="terminalPhoneNo"></param>
         /// <param name="session"></param>
@@ -124,7 +127,7 @@ namespace JT808.Gateway.Session
             }
         }
         /// <summary>
-        /// 
+        /// 尝试连接
         /// </summary>
         /// <param name="terminalPhoneNo"></param>
         /// <param name="socket"></param>
@@ -159,7 +162,7 @@ namespace JT808.Gateway.Session
             return currentSession;
         }
         /// <summary>
-        /// 
+        /// 尝试添加
         /// </summary>
         /// <param name="session"></param>
         /// <returns></returns>
@@ -167,17 +170,26 @@ namespace JT808.Gateway.Session
         {
             return Sessions.TryAdd(session.SessionID, session);
         }
-
+        /// <summary>
+        /// 根据sim卡号异步发送
+        /// </summary>
+        /// <param name="terminalPhoneNo"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public async ValueTask<bool> TrySendByTerminalPhoneNoAsync(string terminalPhoneNo, byte[] data)
         {
             if (TerminalPhoneNoSessions.TryGetValue(terminalPhoneNo, out var session))
             {
                 if (session.TransportProtocolType == JT808TransportProtocolType.tcp)
                 {
+                    //Sends data on a connected socket
+                    //在连接的套接字上发送数据。
                     await session.Client.SendAsync(data, SocketFlags.None);
                 }
                 else
                 {
+                    // Sends data to the specified remote host.
+                    //以异步方式将数据发送到特定远程主机
                     await session.Client.SendToAsync(data, SocketFlags.None, session.RemoteEndPoint);
                 }
                 return true;
@@ -187,7 +199,12 @@ namespace JT808.Gateway.Session
                 return false;
             }
         }
-
+        /// <summary>
+        /// 根据会话Id异步发送
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public async ValueTask<bool> TrySendBySessionIdAsync(string sessionId, byte[] data)
         {
             if (Sessions.TryGetValue(sessionId, out var session))
@@ -207,7 +224,10 @@ namespace JT808.Gateway.Session
                 return false;
             }
         }
-
+        /// <summary>
+        /// 根据终端Sim卡号 移除会话
+        /// </summary>
+        /// <param name="terminalPhoneNo"></param>
         public void RemoveByTerminalPhoneNo(string terminalPhoneNo)
         {
             if (TerminalPhoneNoSessions.TryGetValue(terminalPhoneNo, out var removeTerminalPhoneNoSessions))
@@ -238,7 +258,10 @@ namespace JT808.Gateway.Session
                 }
             }
         }
-
+        /// <summary>
+        /// 根据会话Id移除会话
+        /// </summary>
+        /// <param name="sessionId"></param>
         public void RemoveBySessionId(string sessionId)
         {
             if (Sessions.TryRemove(sessionId, out var removeSession))
@@ -261,7 +284,11 @@ namespace JT808.Gateway.Session
                 removeSession.Close();
             }
         }
-
+        /// <summary>
+        /// 获取所有TCP会话
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public List<JT808TcpSession> GetTcpAll(Func<IJT808Session, bool> predicate = null)
         {
             var query = TerminalPhoneNoSessions.Where(w => w.Value.TransportProtocolType == JT808TransportProtocolType.tcp);
@@ -271,7 +298,11 @@ namespace JT808.Gateway.Session
             }
             return query.Select(s => (JT808TcpSession)s.Value).ToList();
         }
-
+        /// <summary>
+        /// 分页获取所有TCP会话
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public IEnumerable<JT808TcpSession> GetTcpByPage(Func<IJT808Session, bool> predicate = null)
         {
             var query = TerminalPhoneNoSessions.Where(w => w.Value.TransportProtocolType == JT808TransportProtocolType.tcp);
@@ -282,7 +313,11 @@ namespace JT808.Gateway.Session
             return query.Select(s => (JT808TcpSession)s.Value);
         }
 
-
+        /// <summary>
+        /// 获取所有UDP会话
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public List<JT808UdpSession> GetUdpAll(Func<IJT808Session, bool> predicate = null)
         {
             var query = TerminalPhoneNoSessions.Where(w => w.Value.TransportProtocolType == JT808TransportProtocolType.udp);
@@ -292,7 +327,11 @@ namespace JT808.Gateway.Session
             }
             return query.Select(s => (JT808UdpSession)s.Value).ToList();
         }
-
+        /// <summary>
+        /// 分页获取所有UDP会话
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public IEnumerable<JT808UdpSession> GetUdpByPage(Func<IJT808Session, bool> predicate = null)
         {
             var query = TerminalPhoneNoSessions.Where(w => w.Value.TransportProtocolType == JT808TransportProtocolType.udp);

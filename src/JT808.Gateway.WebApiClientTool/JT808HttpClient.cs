@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 namespace JT808.Gateway.WebApiClientTool
 {
     /// <summary>
-    /// 
+    /// JT808Http 客户端
     /// </summary>
     public class JT808HttpClient
     {
         /// <summary>
-        /// 
+        /// http 客户端
         /// </summary>
         public HttpClient HttpClient { get; }
 

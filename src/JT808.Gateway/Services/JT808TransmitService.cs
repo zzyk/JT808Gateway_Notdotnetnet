@@ -12,9 +12,15 @@ using JT808.Gateway.Abstractions.Configurations;
 
 namespace JT808.Gateway.Services
 {
+    /// <summary>
+    /// 转发服务
+    /// </summary>
     public class JT808TransmitService
     {
         private readonly ILogger logger;
+        /// <summary>
+        /// 监控通知选项
+        /// </summary>
         private IOptionsMonitor<RemoteServerOptions> optionsMonitor;
         private ConcurrentDictionary<string, Socket> channeldic = new ConcurrentDictionary<string, Socket>();
         private const int time=20*1000;
@@ -27,7 +33,7 @@ namespace JT808.Gateway.Services
             InitialDispatcherClient();
         }
         /// <summary>
-        /// 
+        /// 异步发送转发数据
         /// </summary>
         /// <param name="parameter"></param>
         public async void SendAsync((string TerminalNo, byte[] Data) parameter)
@@ -101,14 +107,14 @@ namespace JT808.Gateway.Services
             }
         }
         /// <summary>
-        /// 
+        /// 停止转发
         /// </summary>
         public void Stop()
         {
             cts.Cancel();
         }
         /// <summary>
-        /// 
+        /// 初始化调度(分发)客户端
         /// </summary>
         public void InitialDispatcherClient()
         {
