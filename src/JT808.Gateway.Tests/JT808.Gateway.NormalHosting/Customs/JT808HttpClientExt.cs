@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.NormalHosting.Customs
 {
+    /// <summary>
+    /// JT808 Http Client 扩展
+    /// </summary>
     public class JT808HttpClientExt : JT808HttpClient
     {
         public static string index1 = $"jt808apiext/index1";

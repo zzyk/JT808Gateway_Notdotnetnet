@@ -9,6 +9,9 @@ using JT808.Gateway.NormalHosting.Services;
 
 namespace JT808.Gateway.NormalHosting.Impl
 {
+    /// <summary>
+    /// JT808会话消费者
+    /// </summary>
     public class JT808SessionConsumer : IJT808SessionConsumer
     {
         public CancellationTokenSource Cts => new CancellationTokenSource();
@@ -25,7 +28,10 @@ namespace JT808.Gateway.NormalHosting.Impl
             logger = loggerFactory.CreateLogger<JT808SessionConsumer>();
             JT808SessionService = jT808SessionService;
         }
-
+        /// <summary>
+        /// 接收消息处理
+        /// </summary>
+        /// <param name="callback"></param>
         public void OnMessage(Action<(string Notice, string TerminalNo)> callback)
         {
             new Thread((async () =>

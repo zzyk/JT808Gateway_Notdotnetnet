@@ -11,6 +11,9 @@ using System.Text;
 
 namespace JT808.Gateway.NormalHosting.Impl
 {
+    /// <summary>
+    /// JT808自定义消息处理
+    /// </summary>
     public class JT808CustomMessageHandlerImpl : JT808MessageHandler
     {
         private readonly ILogger logger;

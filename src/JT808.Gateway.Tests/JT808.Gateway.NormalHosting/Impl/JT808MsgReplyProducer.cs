@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.NormalHosting.Impl
 {
+    /// <summary>
+    /// JT808消息应答生产者
+    /// </summary>
     public class JT808MsgReplyProducer : IJT808MsgReplyProducer
     {
         public string TopicName { get; } = JT808GatewayConstants.MsgReplyTopic;

@@ -12,6 +12,10 @@ namespace JT808.Gateway.Services
         {
             logger = loggerFactory.CreateLogger<JT808SessionNoticeService>();
         }
+        /// <summary>
+        /// 处理
+        /// </summary>
+        /// <param name="parameter"></param>
         public virtual void Processor((string Notice, string TerminalNo) parameter)
         {
             if (logger.IsEnabled(LogLevel.Debug))

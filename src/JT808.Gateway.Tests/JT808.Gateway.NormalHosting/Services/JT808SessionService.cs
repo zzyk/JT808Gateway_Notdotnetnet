@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.NormalHosting.Services
 {
+    /// <summary>
+    /// JT808会话服务
+    /// </summary>
     public class JT808SessionService
     {
         private readonly Channel<(string Notice, string TerminalNo)> _channel;

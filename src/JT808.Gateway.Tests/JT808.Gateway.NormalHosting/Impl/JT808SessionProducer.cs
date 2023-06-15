@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.NormalHosting.Impl
 {
+    /// <summary>
+    /// JT808会话生产者
+    /// </summary>
     public class JT808SessionProducer : IJT808SessionProducer
     {
         public string TopicName { get; } = JT808GatewayConstants.SessionTopic;

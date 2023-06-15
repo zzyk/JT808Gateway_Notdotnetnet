@@ -14,6 +14,9 @@ using JT808.Gateway.NormalHosting.Customs;
 
 namespace JT808.Gateway.NormalHosting.Jobs
 {
+    /// <summary>
+    /// 调用HttpClient作业
+    /// </summary>
     public class CallHttpClientJob :IHostedService
     {
 

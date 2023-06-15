@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.NormalHosting.Services
 {
+    /// <summary>
+    /// JT808上下行消息应答数据服务
+    /// </summary>
     public class JT808MsgReplyDataService
     {
         private readonly Channel<(string TerminalNo, byte[] Data)> _channel;

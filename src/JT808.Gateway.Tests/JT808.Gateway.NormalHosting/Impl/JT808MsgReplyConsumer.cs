@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.NormalHosting.Impl
 {
+    /// <summary>
+    /// JT808 消息应答消费者
+    /// </summary>
     public class JT808MsgReplyConsumer : IJT808MsgReplyConsumer
     {
         public CancellationTokenSource Cts { get; } = new CancellationTokenSource();
@@ -31,7 +34,10 @@ namespace JT808.Gateway.NormalHosting.Impl
         {
             
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="callback"></param>
         public void OnMessage(Action<(string TerminalNo, byte[] Data)> callback)
         {
             new Thread(async () =>

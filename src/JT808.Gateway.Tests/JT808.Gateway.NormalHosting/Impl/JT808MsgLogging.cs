@@ -8,6 +8,9 @@ using System.Text;
 
 namespace JT808.Gateway.NormalHosting.Impl
 {
+    /// <summary>
+    /// JT808上下行消息日志
+    /// </summary>
     public class JT808MsgLogging : IJT808MsgLogging
     {
         private readonly ILogger Logger;
