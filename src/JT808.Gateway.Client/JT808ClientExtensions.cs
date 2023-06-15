@@ -10,6 +10,9 @@ using JT808.Gateway.Client.Internal;
 
 namespace JT808.Gateway.Client
 {
+    /// <summary>
+    /// JT808 客户端扩展
+    /// </summary>
     public static  class JT808ClientExtensions
     {
         public static IJT808ClientBuilder AddClient(this IJT808Builder jT808Builder)

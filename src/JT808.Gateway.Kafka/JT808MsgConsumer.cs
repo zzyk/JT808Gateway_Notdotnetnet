@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.Kafka
 {
+    /// <summary>
+    /// JT808 消息消费者
+    /// </summary>
     public sealed class JT808MsgConsumer : IJT808MsgConsumer
     {
         private bool disposed = false;
@@ -66,10 +69,16 @@ namespace JT808.Gateway.Kafka
                 }
             }).Start();
         }
+        /// <summary>
+        /// 订阅
+        /// </summary>
         public void Subscribe()
         {
             consumer.Subscribe(TopicName);
         }
+        /// <summary>
+        /// 取消订阅
+        /// </summary>
         public void Unsubscribe()
         {
             if (disposed) return;

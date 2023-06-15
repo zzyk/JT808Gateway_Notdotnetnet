@@ -8,6 +8,9 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace JT808.Gateway.Kafka
 {
+    /// <summary>
+    /// JT808客户端Kafka扩展
+    /// </summary>
     public static class JT808ClientKafkaExtensions
     {
         public static IJT808ClientBuilder AddClientKafka(this IJT808Builder builder)

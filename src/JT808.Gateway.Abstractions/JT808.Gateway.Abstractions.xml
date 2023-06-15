@@ -85,6 +85,33 @@
             远程服务选项
             </summary>
         </member>
+        <member name="T:JT808.Gateway.Abstractions.Dtos.JT808DefaultResultDto">
+            <summary>
+            JT808 默认响应结果
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Abstractions.Dtos.JT808PageResult`1">
+            <summary>
+            JT808分页结果
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:JT808.Gateway.Abstractions.Dtos.JT808ResultDto`1">
+            <summary>
+            JT808 结果
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:JT808.Gateway.Abstractions.Dtos.JT808ResultCode">
+            <summary>
+            JT808结果状态码
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Abstractions.Dtos.JT808TcpSessionInfoDto">
+            <summary>
+            JT808 TCP 会话信息
+            </summary>
+        </member>
         <member name="P:JT808.Gateway.Abstractions.Dtos.JT808TcpSessionInfoDto.LastActiveTime">
             <summary>
             最后上线时间
@@ -105,9 +132,19 @@
             远程ip地址
             </summary>
         </member>
+        <member name="T:JT808.Gateway.Abstractions.Dtos.JT808TerminalPhoneNoDto">
+            <summary>
+            JT808 终端手机号
+            </summary>
+        </member>
         <member name="P:JT808.Gateway.Abstractions.Dtos.JT808TerminalPhoneNoDto.TerminalPhoneNo">
             <summary>
             终端手机号
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Abstractions.Dtos.JT808UdpSessionInfoDto">
+            <summary>
+            JT808 UDP 会话信息
             </summary>
         </member>
         <member name="P:JT808.Gateway.Abstractions.Dtos.JT808UdpSessionInfoDto.LastActiveTime">
@@ -133,6 +170,11 @@
         <member name="T:JT808.Gateway.Abstractions.Dtos.JT808UnificationSendRequestDto">
             <summary>
             统一下发请求参数
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Abstractions.Enums.JT808MsgLoggingType">
+            <summary>
+            JT808 消息日志类型
             </summary>
         </member>
         <member name="F:JT808.Gateway.Abstractions.Enums.JT808MsgLoggingType.up">
@@ -179,6 +221,11 @@
             <param name="session"></param>
             <param name="data"></param>
         </member>
+        <member name="T:JT808.Gateway.Abstractions.IJT808ClientBuilder">
+            <summary>
+            JT808客户端构造器
+            </summary>
+        </member>
         <member name="T:JT808.Gateway.Abstractions.IJT808DownMessageHandler">
             <summary>
             下行消息处理接口
@@ -204,7 +251,7 @@
         </member>
         <member name="T:JT808.Gateway.Abstractions.IJT808MsgConsumer">
             <summary>
-            数据消费接口
+            数据消费接口（将数据进行对应的消息业务处理(例：设备流量统计、第三方平台数据转发、消息日志等)）
             </summary>
         </member>
         <member name="M:JT808.Gateway.Abstractions.IJT808MsgConsumer.OnMessage(System.Action{System.ValueTuple{System.String,System.Byte[]}})">
@@ -255,6 +302,27 @@
             取消订阅
             </summary>
         </member>
+        <member name="T:JT808.Gateway.Abstractions.IJT808MsgReplyLoggingConsumer">
+            <summary>
+            网关应答数据日志消费接口（将网关能解析到直接能下发的数据发送到日志系统）
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Abstractions.IJT808MsgReplyLoggingConsumer.OnMessage(System.Action{System.ValueTuple{System.String,System.Byte[]}})">
+            <summary>
+            消息事件
+            </summary>
+            <param name="callback"></param>
+        </member>
+        <member name="M:JT808.Gateway.Abstractions.IJT808MsgReplyLoggingConsumer.Subscribe">
+            <summary>
+            订阅
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Abstractions.IJT808MsgReplyLoggingConsumer.Unsubscribe">
+            <summary>
+            取消订阅
+            </summary>
+        </member>
         <member name="T:JT808.Gateway.Abstractions.IJT808MsgReplyLoggingProducer">
             <summary>
             网关应答数据日志生产接口(将网关能解析到直接能下发的数据发送到队列)
@@ -266,6 +334,11 @@
             </summary>
             <param name="terminalNo">设备终端号</param>
             <param name="data">808 hex data</param>
+        </member>
+        <member name="T:JT808.Gateway.Abstractions.IJT808MsgReplyProducer">
+            <summary>
+            JT808 应答数据生产接口（将生产的数据解析为对应的消息Id应答发送到队列）
+            </summary>
         </member>
         <member name="M:JT808.Gateway.Abstractions.IJT808MsgReplyProducer.ProduceAsync(System.String,System.Byte[])">
             <summary>
@@ -331,7 +404,7 @@
         </member>
         <member name="T:JT808.Gateway.Abstractions.IJT808SessionConsumer">
             <summary>
-            会话通知（在线/离线）
+            会话通知（在线/离线）消费接口
             </summary>
         </member>
         <member name="M:JT808.Gateway.Abstractions.IJT808SessionConsumer.Subscribe">
@@ -346,7 +419,7 @@
         </member>
         <member name="T:JT808.Gateway.Abstractions.IJT808SessionProducer">
             <summary>
-            会话通知（在线/离线）
+            会话通知（在线/离线）生产接口
             </summary>
         </member>
         <member name="M:JT808.Gateway.Abstractions.IJT808SessionProducer.ProduceAsync(System.String,System.String)">
@@ -370,7 +443,7 @@
         </member>
         <member name="T:JT808.Gateway.Abstractions.JT808GatewayConstants">
             <summary>
-            
+            JT808 网关常量
             </summary>
         </member>
         <member name="F:JT808.Gateway.Abstractions.JT808GatewayConstants.SessionOnline">

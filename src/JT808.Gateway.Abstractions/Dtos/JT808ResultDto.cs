@@ -4,6 +4,10 @@ using System.Text;
 
 namespace JT808.Gateway.Abstractions.Dtos
 {
+    /// <summary>
+    /// JT808 结果
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class JT808ResultDto<T>
     {
         public JT808ResultDto()
@@ -17,7 +21,9 @@ namespace JT808.Gateway.Abstractions.Dtos
 
         public T Data { get; set; }
     }
-
+    /// <summary>
+    /// JT808结果状态码
+    /// </summary>
     public class JT808ResultCode
     {
         public const int Ok = 200;

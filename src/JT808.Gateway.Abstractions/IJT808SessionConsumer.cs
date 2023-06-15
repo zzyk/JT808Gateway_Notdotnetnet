@@ -6,7 +6,7 @@ using System.Threading;
 namespace JT808.Gateway.Abstractions
 {
     /// <summary>
-    /// 会话通知（在线/离线）
+    /// 会话通知（在线/离线）消费接口
     /// </summary>
     public interface IJT808SessionConsumer : IJT808PubSub, IDisposable
     {

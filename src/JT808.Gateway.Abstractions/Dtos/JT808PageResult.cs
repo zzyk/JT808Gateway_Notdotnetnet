@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.Abstractions.Dtos
 {
+    /// <summary>
+    /// JT808分页结果
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class JT808PageResult<T>
     {
         public int PageIndex { get; set; } = 1;

@@ -5,6 +5,9 @@ using JT808.Gateway.Abstractions;
 
 namespace JT808.Gateway.HostedServices
 {
+    /// <summary>
+    /// JT808消息业务处理托管服务
+    /// </summary>
     public class JT808MsgIdHandlerHostedService : IHostedService
     {
         private readonly IJT808MsgConsumer jT808MsgConsumer;

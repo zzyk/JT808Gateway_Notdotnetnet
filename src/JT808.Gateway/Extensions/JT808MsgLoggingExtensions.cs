@@ -7,8 +7,17 @@ using System.Text;
 
 namespace JT808.Gateway.Extensions
 {
+    /// <summary>
+    /// JT808 上下行消息日志扩展
+    /// </summary>
     public static class JT808MsgLoggingExtensions
     {
+        /// <summary>
+        /// 添加上下行消息日志
+        /// </summary>
+        /// <typeparam name="TJT808MsgLogging"></typeparam>
+        /// <param name="jT808ClientBuilder"></param>
+        /// <returns></returns>
         public static IJT808ClientBuilder AddMsgLogging<TJT808MsgLogging>(this IJT808ClientBuilder jT808ClientBuilder)
             where TJT808MsgLogging: IJT808MsgLogging
         {

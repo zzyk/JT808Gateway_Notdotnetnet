@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.Client.Services
 {
+    /// <summary>
+    /// JT808报表托管服务
+    /// </summary>
     public class JT808ReportHostedService : BackgroundService
     {
         private readonly IOptionsMonitor<JT808ReportOptions> jT808ReportOptions;
@@ -36,7 +39,11 @@ namespace JT808.Gateway.Client.Services
             this.jT808TcpClientFactory = jT808TcpClientFactory;
             jT808ReportOptions.OnChange((options) => { options.FileExistsAndCreate(); });
         }
-
+        /// <summary>
+        /// 异步执行
+        /// </summary>
+        /// <param name="stoppingToken"></param>
+        /// <returns></returns>
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)

@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.Kafka
 {
+    /// <summary>
+    /// JT808 消息应答日志消费者
+    /// </summary>
     public sealed class JT808MsgReplyLoggingConsumer : IJT808MsgReplyLoggingConsumer
     {
         private bool disposed = false;

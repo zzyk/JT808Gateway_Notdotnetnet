@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace JT808.Gateway.Client.Metadata
 {
+    /// <summary>
+    /// JT808客户端请求
+    /// </summary>
     public class JT808ClientRequest
     {
         public JT808Package Package { get; }

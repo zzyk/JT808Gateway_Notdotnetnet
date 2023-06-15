@@ -6,7 +6,7 @@ using System.Threading;
 namespace JT808.Gateway.Client.Metadata
 {
     /// <summary>
-    /// 
+    /// JT808 原子计数器
     /// <see cref="Grpc.Core.Internal"/>
     /// </summary>
     internal class JT808AtomicCounter

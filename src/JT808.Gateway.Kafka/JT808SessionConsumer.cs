@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.Kafka
 {
+    /// <summary>
+    /// JT808会话消费者
+    /// </summary>
     public sealed class JT808SessionConsumer : IJT808SessionConsumer
     {
         private bool disposed = false;
@@ -30,7 +33,10 @@ namespace JT808.Gateway.Kafka
             TopicName = consumerConfigAccessor.Value.TopicName;
             logger = loggerFactory.CreateLogger<JT808SessionConsumer>();
         }
-
+        /// <summary>
+        /// 会话消费者消息处理
+        /// </summary>
+        /// <param name="callback"></param>
         public void OnMessage(Action<(string Notice, string TerminalNo)> callback)
         {
             new Thread(() =>

@@ -9,10 +9,13 @@ using System.Text;
 
 namespace JT808.Gateway.Extensions
 {
+    /// <summary>
+    /// JT808 会话通知扩展
+    /// </summary>
     public static class JT808SessionNoticeExtensions
     {
         /// <summary>
-        /// 会话通知服务
+        /// 添加会话通知服务
         /// </summary>
         /// <param name="jT808ClientBuilder"></param>
         /// <returns></returns>

@@ -6,6 +6,9 @@ using System.Threading;
 
 namespace JT808.Gateway.Internal
 {
+    /// <summary>
+    /// JT808应答消息消费
+    /// </summary>
     class JT808MsgReplyConsumer_Empry : IJT808MsgReplyConsumer
     {
         public CancellationTokenSource Cts { get; } = new CancellationTokenSource();

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace JJT808.Gateway.Kafka
 {
+    /// <summary>
+    /// JT808 消息应答生产者
+    /// </summary>
     public sealed class JT808MsgReplyProducer : IJT808MsgReplyProducer
     {
         private bool disposed = false;
@@ -22,6 +25,12 @@ namespace JJT808.Gateway.Kafka
             TopicName = producerConfigAccessor.Value.TopicName;
         }
 
+        /// <summary>
+        /// 异步生产
+        /// </summary>
+        /// <param name="terminalNo"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public async ValueTask ProduceAsync(string terminalNo, byte[] data)
         {
             if (disposed) return;

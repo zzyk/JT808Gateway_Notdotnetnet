@@ -6,6 +6,9 @@ using System.Text;
 
 namespace JT808.Gateway.Abstractions
 {
+    /// <summary>
+    /// JT808客户端构造器
+    /// </summary>
     public interface IJT808ClientBuilder
     {
         IJT808Builder JT808Builder { get; }

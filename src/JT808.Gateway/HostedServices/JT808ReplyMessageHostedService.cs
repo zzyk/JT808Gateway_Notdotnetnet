@@ -7,11 +7,14 @@ using Microsoft.Extensions.Logging;
 namespace JT808.Gateway.HostedServices
 {
     /// <summary>
-    /// 
+    /// JT808 消息应答托管服务
     /// </summary>
     public class JT808ReplyMessageHostedService : IHostedService
     {
         private IJT808MsgConsumer jT808MsgConsumer;
+        /// <summary>
+        /// JT808应答消息处理
+        /// </summary>
         private IJT808DownMessageHandler jT808ReplyMessageHandler;
         private IJT808MsgReplyProducer jT808MsgReplyProducer;
         private ILogger logger;

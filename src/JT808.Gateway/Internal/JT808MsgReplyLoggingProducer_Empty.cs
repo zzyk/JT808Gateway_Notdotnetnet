@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.Internal
 {
+    /// <summary>
+    /// JT808上下行应答消息日志生产
+    /// </summary>
     class JT808MsgReplyLoggingProducer_Empty : IJT808MsgReplyLoggingProducer
     {
         public string TopicName { get; }

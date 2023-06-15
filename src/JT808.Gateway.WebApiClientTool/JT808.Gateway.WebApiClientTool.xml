@@ -6,12 +6,12 @@
     <members>
         <member name="T:JT808.Gateway.WebApiClientTool.JT808HttpClient">
             <summary>
-            
+            JT808Http 客户端
             </summary>
         </member>
         <member name="P:JT808.Gateway.WebApiClientTool.JT808HttpClient.HttpClient">
             <summary>
-            
+            http 客户端
             </summary>
         </member>
         <member name="M:JT808.Gateway.WebApiClientTool.JT808HttpClient.#ctor(System.Net.Http.HttpClient)">
@@ -101,7 +101,7 @@
         </member>
         <member name="T:JT808.Gateway.WebApiClientTool.JT808HttpClientExtensions">
             <summary>
-            
+            JT808Http客户端扩展
             </summary>
         </member>
         <member name="M:JT808.Gateway.WebApiClientTool.JT808HttpClientExtensions.AddJT808WebApiClientTool(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Uri,System.String)">

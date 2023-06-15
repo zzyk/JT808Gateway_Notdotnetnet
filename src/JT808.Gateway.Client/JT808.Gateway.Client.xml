@@ -4,10 +4,46 @@
         <name>JT808.Gateway.Client</name>
     </assembly>
     <members>
+        <member name="T:JT808.Gateway.Client.IJT808ClientBuilder">
+            <summary>
+            JT808 客户端构造器
+            </summary>
+        </member>
         <member name="T:JT808.Gateway.Client.IJT808MessageProducer">
             <summary>
             消息数据包
             </summary>
+        </member>
+        <member name="T:JT808.Gateway.Client.JT808ClientBuilderDefault">
+            <summary>
+            JT808 默认客户端构造器
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Client.Internal.JT808RetryBlockingCollection">
+            <summary>
+            JT808 重试阻塞集合
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Client.JT808ClientExtensions">
+            <summary>
+            JT808 客户端扩展
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Client.JT808DeviceConfig">
+            <summary>
+            JT808 设备配置
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Client.JT808DeviceConfig.#ctor(System.String,System.String,System.Int32,System.String,System.Int32,JT808.Protocol.Enums.JT808Version)">
+            <summary>
+            
+            </summary>
+            <param name="terminalPhoneNo">SIM卡号</param>
+            <param name="tcpHost">TCP IP</param>
+            <param name="tcpPort">TCP 端口号</param>
+            <param name="localIPAddress">本机IP</param>
+            <param name="localPort">本机端口号</param>
+            <param name="version">版本</param>
         </member>
         <member name="P:JT808.Gateway.Client.JT808DeviceConfig.Heartbeat">
             <summary>
@@ -19,10 +55,124 @@
             自动重连 默认true
             </summary>
         </member>
+        <member name="P:JT808.Gateway.Client.JT808DeviceConfig.MsgSNDistributed">
+            <summary>
+            JT808分布式自增流水号
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Client.JT808ReportOptions">
+            <summary>
+            JT808报表选项
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Client.JT808ReportOptions.FileName">
+            <summary>
+            文件名称
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Client.JT808ReportOptions.FilePath">
+            <summary>
+            文件路径
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Client.JT808ReportOptions.FileFullPath">
+            <summary>
+            全路径
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Client.JT808ReportOptions.Interval">
+            <summary>
+            间隔
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Client.JT808TcpClient">
+            <summary>
+            JT808 TCP 客户端
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Client.JT808TcpClient.ConnectAsync">
+            <summary>
+            异步连接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.Client.JT808TcpClient.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            异步开始
+            </summary>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:JT808.Gateway.Client.JT808TcpClient.FillPipeAsync(System.Net.Sockets.Socket,System.IO.Pipelines.PipeWriter,System.Threading.CancellationToken)">
+            <summary>
+            异步填充通道
+            </summary>
+            <param name="session"></param>
+            <param name="writer"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.Client.JT808TcpClient.ReadPipeAsync(System.Net.Sockets.Socket,System.IO.Pipelines.PipeReader)">
+            <summary>
+            异步读取通道
+            </summary>
+            <param name="session"></param>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.Client.JT808TcpClient.ReaderBuffer(System.Buffers.ReadOnlySequence{System.Byte}@,System.Net.Sockets.Socket,System.SequencePosition@,System.SequencePosition@)">
+            <summary>
+            读取缓存
+            </summary>
+            <param name="buffer"></param>
+            <param name="session"></param>
+            <param name="consumed"></param>
+            <param name="examined"></param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:JT808.Gateway.Client.JT808TcpClient.SendAsync(JT808.Gateway.Client.Metadata.JT808ClientRequest)">
+            <summary>
+            异步发送
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JT808.Gateway.Client.JT808TcpClient.Close">
+            <summary>
+            JT808 TCP 客户端关闭
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Client.JT808TcpClient.heartbeatShutdown">
+            <summary>
+            心跳关闭
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Client.IJT808TcpClientFactory">
+            <summary>
+            JT808 TCP 客户端工厂接口
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Client.JT808TcpClientFactory">
+            <summary>
+            JT808 TCP 客户端工厂
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Client.JT808TcpClientFactory.Create(JT808.Gateway.Client.JT808DeviceConfig,System.Threading.CancellationToken)">
+            <summary>
+            创建JT808 TCP 客户端
+            </summary>
+            <param name="deviceConfig"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="T:JT808.Gateway.Client.Metadata.JT808AtomicCounter">
             <summary>
-            
+            JT808 原子计数器
             <see cref="!:Grpc.Core.Internal"/>
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Client.Metadata.JT808ClientRequest">
+            <summary>
+            JT808客户端请求
             </summary>
         </member>
         <member name="P:JT808.Gateway.Client.Metadata.JT808ClientRequest.MinBufferSize">
@@ -30,14 +180,78 @@
             根据实际情况适当调整包的大小
             </summary>
         </member>
+        <member name="T:JT808.Gateway.Client.Metadata.JT808Report">
+            <summary>
+            JT808报表
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Client.Metadata.JT808Report.SendTotalCount">
+            <summary>
+            发送总数
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Client.Metadata.JT808Report.ReceiveTotalCount">
+            <summary>
+            接收总数
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Client.Metadata.JT808Report.CurrentDate">
+            <summary>
+            当前日期
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Client.Metadata.JT808Report.Connections">
+            <summary>
+            连接数
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Client.Metadata.JT808Report.OnlineConnections">
+            <summary>
+            在线连接数
+            </summary>
+        </member>
+        <member name="P:JT808.Gateway.Client.Metadata.JT808Report.OfflineConnections">
+            <summary>
+            离线连接数
+            </summary>
+        </member>
         <member name="T:JT808.Gateway.Client.Services.JT808ReceiveAtomicCounterService">
             <summary>
             接收计数包服务
             </summary>
         </member>
+        <member name="T:JT808.Gateway.Client.Services.JT808ReportHostedService">
+            <summary>
+            JT808报表托管服务
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Client.Services.JT808ReportHostedService.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            异步执行
+            </summary>
+            <param name="stoppingToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JT808.Gateway.Client.Services.JT808RetryClientHostedService">
+            <summary>
+            JT808重试客户端托管服务
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Client.Services.JT808RetryClientHostedService.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            异步开始
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="T:JT808.Gateway.Client.Services.JT808SendAtomicCounterService">
             <summary>
             发送计数包服务
+            </summary>
+        </member>
+        <member name="F:JT808.Gateway.Client.Services.JT808SendAtomicCounterService.MsgSuccessCounter">
+            <summary>
+            成功消息数
             </summary>
         </member>
     </members>

@@ -19,6 +19,9 @@ using Microsoft.Extensions.Options;
 
 namespace JT808.Gateway
 {
+    /// <summary>
+    /// JT808 UDP 服务
+    /// </summary>
     public class JT808UdpServer : IHostedService
     {
         private readonly Socket server;

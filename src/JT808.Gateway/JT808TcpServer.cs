@@ -310,6 +310,11 @@ namespace JT808.Gateway
                 consumed = buffer.GetPosition(totalConsumed);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="session"></param>
+        /// <param name="package"></param>
         private void Processor(in IJT808Session session, in JT808HeaderPackage package)
         {
             try

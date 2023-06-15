@@ -6,7 +6,7 @@ using System.Threading;
 namespace JT808.Gateway.Abstractions
 {
     /// <summary>
-    /// 数据消费接口
+    /// 数据消费接口（将数据进行对应的消息业务处理(例：设备流量统计、第三方平台数据转发、消息日志等)）
     /// </summary>
     public interface IJT808MsgConsumer : IJT808PubSub, IDisposable
     {

@@ -15,6 +15,32 @@
             </summary>
             <param name="context"></param>
         </member>
+        <member name="T:JT808.Gateway.Extensions.JT808MsgIdHandlerExtensions">
+            <summary>
+            JT808 消息业务处理扩展
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Extensions.JT808MsgIdHandlerExtensions.AddMsgIdHandler``1(JT808.Gateway.Abstractions.IJT808ClientBuilder)">
+            <summary>
+            添加消息业务处理
+            </summary>
+            <typeparam name="TJT808UpMessageHandler"></typeparam>
+            <param name="jT808ClientBuilder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JT808.Gateway.Extensions.JT808MsgLoggingExtensions">
+            <summary>
+            JT808 上下行消息日志扩展
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Extensions.JT808MsgLoggingExtensions.AddMsgLogging``1(JT808.Gateway.Abstractions.IJT808ClientBuilder)">
+            <summary>
+            添加上下行消息日志
+            </summary>
+            <typeparam name="TJT808MsgLogging"></typeparam>
+            <param name="jT808ClientBuilder"></param>
+            <returns></returns>
+        </member>
         <member name="T:JT808.Gateway.Extensions.JT808ReplyMessageExtensions">
             <summary>
             消息应答服务扩展
@@ -27,9 +53,14 @@
             <param name="jT808ClientBuilder"></param>
             <returns></returns>
         </member>
+        <member name="T:JT808.Gateway.Extensions.JT808SessionNoticeExtensions">
+            <summary>
+            JT808 会话通知扩展
+            </summary>
+        </member>
         <member name="M:JT808.Gateway.Extensions.JT808SessionNoticeExtensions.AddSessionNotice(JT808.Gateway.Abstractions.IJT808ClientBuilder)">
             <summary>
-            会话通知服务
+            添加会话通知服务
             </summary>
             <param name="jT808ClientBuilder"></param>
             <returns></returns>
@@ -73,9 +104,39 @@
             <param name="configuration"></param>
             <returns></returns>
         </member>
+        <member name="T:JT808.Gateway.Extensions.JT808WebApiExtensions">
+            <summary>
+            JT808 WebAPI扩展
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.HostedServices.JT808MsgDownLoggingHostedService">
+            <summary>
+            JT808 下行消息日志托管服务
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.HostedServices.JT808MsgDownReplyLoggingHostedService">
+            <summary>
+            JT808下行应答消息托管服务
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.HostedServices.JT808MsgIdHandlerHostedService">
+            <summary>
+            JT808消息业务处理托管服务
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.HostedServices.JT808MsgUpLoggingHostedService">
+            <summary>
+            JT808 上行消息日志托管服务
+            </summary>
+        </member>
         <member name="T:JT808.Gateway.HostedServices.JT808ReplyMessageHostedService">
             <summary>
-            
+            JT808 消息应答托管服务
+            </summary>
+        </member>
+        <member name="F:JT808.Gateway.HostedServices.JT808ReplyMessageHostedService.jT808ReplyMessageHandler">
+            <summary>
+            JT808应答消息处理
             </summary>
         </member>
         <member name="M:JT808.Gateway.HostedServices.JT808ReplyMessageHostedService.#ctor(Microsoft.Extensions.Logging.ILoggerFactory,JT808.Gateway.Abstractions.IJT808DownMessageHandler,JT808.Gateway.Abstractions.IJT808MsgReplyProducer,JT808.Gateway.Abstractions.IJT808MsgConsumer)">
@@ -138,6 +199,21 @@
         <member name="T:JT808.Gateway.Internal.JT808GatewayBuilderDefault">
             <summary>
             JT808网关默认构造器
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Internal.JT808MsgProducer_Empty">
+            <summary>
+            JT808 消息生产
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Internal.JT808MsgReplyConsumer_Empry">
+            <summary>
+            JT808应答消息消费
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Internal.JT808MsgReplyLoggingProducer_Empty">
+            <summary>
+            JT808上下行应答消息日志生产
             </summary>
         </member>
         <member name="T:JT808.Gateway.JT808GatewayExtensions">
@@ -289,12 +365,24 @@
             <param name="consumed"></param>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
+        <member name="M:JT808.Gateway.JT808TcpServer.Processor(JT808.Gateway.Abstractions.IJT808Session@,JT808.Protocol.JT808HeaderPackage@)">
+            <summary>
+            
+            </summary>
+            <param name="session"></param>
+            <param name="package"></param>
+        </member>
         <member name="M:JT808.Gateway.JT808TcpServer.StopAsync(System.Threading.CancellationToken)">
             <summary>
             
             </summary>
             <param name="cancellationToken"></param>
             <returns></returns>
+        </member>
+        <member name="T:JT808.Gateway.JT808UdpServer">
+            <summary>
+            JT808 UDP 服务
+            </summary>
         </member>
         <member name="T:JT808.Gateway.JT808WebApi">
             <summary>
@@ -450,6 +538,18 @@
             <summary>
             会话通知（在线/离线）服务
             </summary>
+        </member>
+        <member name="T:JT808.Gateway.Services.JT808TcpReceiveTimeoutHostedService">
+            <summary>
+            JT808 TCP接收超时托管服务
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Services.JT808TcpReceiveTimeoutHostedService.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            异步执行
+            </summary>
+            <param name="stoppingToken"></param>
+            <returns></returns>
         </member>
         <member name="T:JT808.Gateway.Services.JT808TransmitService">
             <summary>

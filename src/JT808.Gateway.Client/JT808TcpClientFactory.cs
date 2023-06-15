@@ -10,6 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace JT808.Gateway.Client
 {
+    /// <summary>
+    /// JT808 TCP 客户端工厂接口
+    /// </summary>
     public interface IJT808TcpClientFactory : IDisposable
     {
         ValueTask<JT808TcpClient> Create(JT808DeviceConfig deviceConfig, CancellationToken cancellationToken);
@@ -18,7 +21,9 @@ namespace JT808.Gateway.Client
 
         List<JT808TcpClient> GetAll();
     }
-
+    /// <summary>
+    /// JT808 TCP 客户端工厂
+    /// </summary>
     public class JT808TcpClientFactory: IJT808TcpClientFactory
     {
         private readonly ConcurrentDictionary<string, JT808TcpClient> dict;
@@ -30,7 +35,12 @@ namespace JT808.Gateway.Client
             dict = new ConcurrentDictionary<string, JT808TcpClient>(StringComparer.OrdinalIgnoreCase);
             this.serviceProvider = serviceProvider;
         }
-
+        /// <summary>
+        /// 创建JT808 TCP 客户端
+        /// </summary>
+        /// <param name="deviceConfig"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async ValueTask<JT808TcpClient> Create(JT808DeviceConfig deviceConfig, CancellationToken cancellationToken)
         {
             if(dict.TryGetValue(deviceConfig.TerminalPhoneNo,out var client))

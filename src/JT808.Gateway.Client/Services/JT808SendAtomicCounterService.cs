@@ -7,6 +7,9 @@ namespace JT808.Gateway.Client.Services
     /// </summary>
     public class JT808SendAtomicCounterService
     {
+        /// <summary>
+        /// 成功消息数
+        /// </summary>
         private readonly JT808AtomicCounter MsgSuccessCounter;
 
         public JT808SendAtomicCounterService()

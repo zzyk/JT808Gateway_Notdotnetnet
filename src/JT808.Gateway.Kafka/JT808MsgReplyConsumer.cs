@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.Kafka
 {
+    /// <summary>
+    /// JT808消息应答消费者
+    /// </summary>
     public sealed class JT808MsgReplyConsumer : IJT808MsgReplyConsumer
     {
         private bool disposed = false;
@@ -30,7 +33,10 @@ namespace JT808.Gateway.Kafka
             TopicName = consumerConfigAccessor.Value.TopicName;
             logger = loggerFactory.CreateLogger<JT808MsgReplyConsumer>();
         }
-
+        /// <summary>
+        /// 消费消息处理
+        /// </summary>
+        /// <param name="callback"></param>
         public void OnMessage(Action<(string TerminalNo, byte[] Data)> callback)
         {
             new Thread(() => {
@@ -65,12 +71,16 @@ namespace JT808.Gateway.Kafka
                 }
             }).Start();
         }
-
+        /// <summary>
+        /// 订阅
+        /// </summary>
         public void Subscribe()
         {
             consumer.Subscribe(TopicName);
         }
-
+        /// <summary>
+        /// 取消订阅
+        /// </summary>
         public void Unsubscribe()
         {
             if (disposed) return;

@@ -10,6 +10,9 @@ using Microsoft.Extensions.Logging;
 
 namespace JT808.Gateway.Kafka
 {
+    /// <summary>
+    /// JT808会话生产者
+    /// </summary>
     public sealed class JT808SessionProducer : IJT808SessionProducer
     {
         private bool disposed = false;

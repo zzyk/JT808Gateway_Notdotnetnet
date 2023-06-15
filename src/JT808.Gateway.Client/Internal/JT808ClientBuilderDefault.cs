@@ -7,6 +7,9 @@ using System.Text;
 
 namespace JT808.Gateway.Client
 {
+    /// <summary>
+    /// JT808 默认客户端构造器
+    /// </summary>
     internal class JT808ClientBuilderDefault : IJT808ClientBuilder
     {
         public IJT808Builder JT808Builder { get; }

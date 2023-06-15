@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace JT808.Gateway.Extensions
 {
+    /// <summary>
+    /// JT808 WebAPI扩展
+    /// </summary>
     public static class JT808WebApiExtensions
     {
         public static IServiceCollection AddJT808Cors(this IServiceCollection  serviceDescriptors)

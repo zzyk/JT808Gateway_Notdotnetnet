@@ -18,6 +18,9 @@ using JT808.Protocol.Enums;
 namespace JT808.Gateway.Client
 {
 
+    /// <summary>
+    /// JT808 TCP 客户端
+    /// </summary>
     public class JT808TcpClient:IDisposable
     {
         private bool disposed = false;
@@ -46,6 +49,10 @@ namespace JT808.Gateway.Client
             producer = serviceProvider.GetRequiredService<IJT808MessageProducer>();
             RetryBlockingCollection = serviceProvider.GetRequiredService<JT808RetryBlockingCollection>();
         }
+        /// <summary>
+        /// 异步连接
+        /// </summary>
+        /// <returns></returns>
         public async ValueTask<bool> ConnectAsync()
         {
             var remoteEndPoint = new IPEndPoint(IPAddress.Parse(DeviceConfig.TcpHost), DeviceConfig.TcpPort);
@@ -105,6 +112,10 @@ namespace JT808.Gateway.Client
                 return false;
             }
         }
+        /// <summary>
+        /// 异步开始
+        /// </summary>
+        /// <param name="cancellationToken"></param>
         public async void StartAsync(CancellationToken cancellationToken)
         {
             try
@@ -128,6 +139,13 @@ namespace JT808.Gateway.Client
 
             }
         }
+        /// <summary>
+        /// 异步填充通道
+        /// </summary>
+        /// <param name="session"></param>
+        /// <param name="writer"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         private async Task FillPipeAsync(Socket session, PipeWriter writer, CancellationToken cancellationToken)
         {
             while (true)
@@ -165,6 +183,12 @@ namespace JT808.Gateway.Client
             }
             writer.Complete();
         }
+        /// <summary>
+        /// 异步读取通道
+        /// </summary>
+        /// <param name="session"></param>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         private async Task ReadPipeAsync(Socket session, PipeReader reader)
         {
             while (true)
@@ -197,6 +221,14 @@ namespace JT808.Gateway.Client
             }
             reader.Complete();
         }
+        /// <summary>
+        /// 读取缓存
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="session"></param>
+        /// <param name="consumed"></param>
+        /// <param name="examined"></param>
+        /// <exception cref="ArgumentException"></exception>
         private void ReaderBuffer(ref ReadOnlySequence<byte> buffer, Socket session, out SequencePosition consumed, out SequencePosition examined)
         {
             consumed = buffer.Start;
@@ -251,6 +283,11 @@ namespace JT808.Gateway.Client
                 consumed = buffer.GetPosition(totalConsumed);
             }
         }
+        /// <summary>
+        /// 异步发送
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public async ValueTask<bool> SendAsync(JT808ClientRequest message)
         {
             if (disposed) return false;
@@ -302,6 +339,9 @@ namespace JT808.Gateway.Client
             }
             return false;
         }
+        /// <summary>
+        /// JT808 TCP 客户端关闭
+        /// </summary>
         public void Close()
         {
             if (disposed) return;
@@ -316,7 +356,9 @@ namespace JT808.Gateway.Client
                 clientSocket?.Close();
             }          
         }
-
+        /// <summary>
+        /// 心跳关闭
+        /// </summary>
         private void heartbeatShutdown()
         {
             try

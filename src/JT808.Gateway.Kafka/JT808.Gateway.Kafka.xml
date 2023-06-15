@@ -4,6 +4,66 @@
         <name>JT808.Gateway.Kafka</name>
     </assembly>
     <members>
+        <member name="T:JT808.Gateway.Configs.Kafka.JT808ConsumerConfig">
+            <summary>
+            JT808 消费配置
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Configs.Kafka.JT808MsgConsumerConfig">
+            <summary>
+            JT808消息消费配置
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Configs.Kafka.JT808MsgProducerConfig">
+            <summary>
+            JT808消息生产配置
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Configs.Kafka.JT808MsgReplyConsumerConfig">
+            <summary>
+            JT808 消息应答消费配置
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Configs.Kafka.JT808MsgReplyLoggingConsumerConfig">
+            <summary>
+            JT808 消息应答日志消费配置
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Configs.Kafka.JT808MsgReplyLoggingProducerConfig">
+            <summary>
+            JT808消息应答日志生产配置
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Configs.Kafka.JT808MsgReplyProducerConfig">
+            <summary>
+            JT808 消息应答生产配置
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Configs.Kafka.JT808ProducerConfig">
+            <summary>
+            JT808生产者配置
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Configs.Kafka.JT808SessionConsumerConfig">
+            <summary>
+            JT808会话消费配置
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Configs.Kafka.JT808SessionProducerConfig">
+            <summary>
+            JT808会话生产配置
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Kafka.JT808ClientBuilderDefault">
+            <summary>
+            JT808默认客户端构造器
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Kafka.JT808ClientKafkaExtensions">
+            <summary>
+            JT808客户端Kafka扩展
+            </summary>
+        </member>
         <member name="M:JT808.Gateway.Kafka.JT808ClientKafkaExtensions.AddMsgConsumer(JT808.Gateway.Abstractions.IJT808ClientBuilder,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
             
@@ -44,6 +104,52 @@
             <param name="configuration">GetSection("JT808SessionConsumerConfig")</param>
             <returns></returns>
         </member>
+        <member name="T:JT808.Gateway.Kafka.JT808MsgConsumer">
+            <summary>
+            JT808 消息消费者
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Kafka.JT808MsgConsumer.Subscribe">
+            <summary>
+            订阅
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Kafka.JT808MsgConsumer.Unsubscribe">
+            <summary>
+            取消订阅
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Kafka.JT808MsgReplyConsumer">
+            <summary>
+            JT808消息应答消费者
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Kafka.JT808MsgReplyConsumer.OnMessage(System.Action{System.ValueTuple{System.String,System.Byte[]}})">
+            <summary>
+            消费消息处理
+            </summary>
+            <param name="callback"></param>
+        </member>
+        <member name="M:JT808.Gateway.Kafka.JT808MsgReplyConsumer.Subscribe">
+            <summary>
+            订阅
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Kafka.JT808MsgReplyConsumer.Unsubscribe">
+            <summary>
+            取消订阅
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Kafka.JT808MsgReplyLoggingConsumer">
+            <summary>
+            JT808 消息应答日志消费者
+            </summary>
+        </member>
+        <member name="T:JT808.Gateway.Kafka.JT808MsgReplyLoggingProducer">
+            <summary>
+            JT808 消息应答日志生产者
+            </summary>
+        </member>
         <member name="M:JT808.Gateway.Kafka.JT808ServerKafkaExtensions.AddServerKafkaMsgProducer(JT808.Gateway.Abstractions.IJT808GatewayBuilder,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
             
@@ -74,6 +180,35 @@
             </summary>
             <param name="jT808GatewayBuilder"></param>
             <param name="configuration">GetSection("JT808MsgReplyLoggingProducerConfig")</param>
+            <returns></returns>
+        </member>
+        <member name="T:JT808.Gateway.Kafka.JT808SessionConsumer">
+            <summary>
+            JT808会话消费者
+            </summary>
+        </member>
+        <member name="M:JT808.Gateway.Kafka.JT808SessionConsumer.OnMessage(System.Action{System.ValueTuple{System.String,System.String}})">
+            <summary>
+            会话消费者消息处理
+            </summary>
+            <param name="callback"></param>
+        </member>
+        <member name="T:JT808.Gateway.Kafka.JT808SessionProducer">
+            <summary>
+            JT808会话生产者
+            </summary>
+        </member>
+        <member name="T:JJT808.Gateway.Kafka.JT808MsgReplyProducer">
+            <summary>
+            JT808 消息应答生产者
+            </summary>
+        </member>
+        <member name="M:JJT808.Gateway.Kafka.JT808MsgReplyProducer.ProduceAsync(System.String,System.Byte[])">
+            <summary>
+            异步生产
+            </summary>
+            <param name="terminalNo"></param>
+            <param name="data"></param>
             <returns></returns>
         </member>
     </members>

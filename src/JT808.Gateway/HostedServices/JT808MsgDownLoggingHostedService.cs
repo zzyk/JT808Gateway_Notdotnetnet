@@ -6,6 +6,9 @@ using JT808.Gateway.Abstractions.Enums;
 
 namespace JT808.Gateway.HostedServices
 {
+    /// <summary>
+    /// JT808 下行消息日志托管服务
+    /// </summary>
     public class JT808MsgDownLoggingHostedService : IHostedService
     {
         private readonly IJT808MsgReplyConsumer jT808MsgReplyConsumer;

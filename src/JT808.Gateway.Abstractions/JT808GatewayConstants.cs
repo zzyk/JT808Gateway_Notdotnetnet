@@ -1,7 +1,7 @@
 ﻿namespace JT808.Gateway.Abstractions
 {
     /// <summary>
-    /// 
+    /// JT808 网关常量
     /// </summary>
     public static class JT808GatewayConstants
     {

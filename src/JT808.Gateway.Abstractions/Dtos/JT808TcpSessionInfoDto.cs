@@ -2,6 +2,9 @@
 
 namespace JT808.Gateway.Abstractions.Dtos
 {
+    /// <summary>
+    /// JT808 TCP 会话信息
+    /// </summary>
     public class JT808TcpSessionInfoDto
     {
         /// <summary>

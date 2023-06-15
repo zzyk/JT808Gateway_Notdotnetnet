@@ -7,8 +7,17 @@ using System.Text;
 
 namespace JT808.Gateway.Extensions
 {
+    /// <summary>
+    /// JT808 消息业务处理扩展
+    /// </summary>
     public static class JT808MsgIdHandlerExtensions
     {
+        /// <summary>
+        /// 添加消息业务处理
+        /// </summary>
+        /// <typeparam name="TJT808UpMessageHandler"></typeparam>
+        /// <param name="jT808ClientBuilder"></param>
+        /// <returns></returns>
         public static IJT808ClientBuilder AddMsgIdHandler<TJT808UpMessageHandler>(this IJT808ClientBuilder jT808ClientBuilder)
             where TJT808UpMessageHandler : IJT808UpMessageHandler
         {

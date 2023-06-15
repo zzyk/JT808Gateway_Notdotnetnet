@@ -15,6 +15,9 @@ using System.Threading.Tasks;
 
 namespace JT808.Gateway.Client.Services
 {
+    /// <summary>
+    /// JT808重试客户端托管服务
+    /// </summary>
     internal class JT808RetryClientHostedService : IHostedService
     {
         private readonly IJT808TcpClientFactory jT808TcpClientFactory;
@@ -32,7 +35,11 @@ namespace JT808.Gateway.Client.Services
             this.jT808TcpClientFactory = jT808TcpClientFactory;
             RetryBlockingCollection = retryBlockingCollection;
         }
-
+        /// <summary>
+        /// 异步开始
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public Task StartAsync(CancellationToken cancellationToken)
         {
             new Thread(async () =>
