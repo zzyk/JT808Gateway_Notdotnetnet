@@ -1,0 +1,29 @@
+﻿using JT808.Gateway.Abstractions;
+using JT808Server.Application.Services;
+
+namespace JT808Server.Application.Impl
+{
+    /// <summary>
+    /// JT808消息应答生产者
+    /// </summary>
+    public class JT808MsgReplyProducer : IJT808MsgReplyProducer
+    {
+        public string TopicName { get; } = JT808GatewayConstants.MsgReplyTopic;
+
+        private readonly JT808MsgReplyDataService MsgReplyDataService;
+
+        public JT808MsgReplyProducer(JT808MsgReplyDataService msgReplyDataService)
+        {
+            MsgReplyDataService = msgReplyDataService;
+        }
+
+        public async ValueTask ProduceAsync(string terminalNo, byte[] data)
+        {
+            await MsgReplyDataService.WriteAsync(terminalNo, data);
+        }
+
+        public void Dispose()
+        {
+        }
+    }
+}

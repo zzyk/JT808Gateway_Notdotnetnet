@@ -90,7 +90,7 @@ namespace JT808.Gateway.Session
         /// </summary>
         /// <param name="terminalPhoneNo"></param>
         /// <param name="session"></param>
-        internal void TryLink(string terminalPhoneNo, IJT808Session session)
+        public void TryLink(string terminalPhoneNo, IJT808Session session)
         {
             session.TerminalPhoneNo = terminalPhoneNo;
             DateTime curretDatetime = DateTime.Now;
@@ -166,7 +166,7 @@ namespace JT808.Gateway.Session
         /// </summary>
         /// <param name="session"></param>
         /// <returns></returns>
-        internal bool TryAdd(IJT808Session session)
+        public bool TryAdd(IJT808Session session)
         {
             return Sessions.TryAdd(session.SessionID, session);
         }

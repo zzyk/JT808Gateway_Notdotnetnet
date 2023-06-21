@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace JT808.Gateway.Abstractions.Dtos
 {
@@ -20,6 +21,7 @@ namespace JT808.Gateway.Abstractions.Dtos
         public int Code { get; set; }
 
         public T Data { get; set; }
+
     }
     /// <summary>
     /// JT808结果状态码
