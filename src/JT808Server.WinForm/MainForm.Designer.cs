@@ -196,6 +196,7 @@
             txtTrackVeh = new TextBox();
             label3 = new Label();
             tmUpdateStatus = new System.Windows.Forms.Timer(components);
+            splitContainer1 = new SplitContainer();
             tabControl1.SuspendLayout();
             tabPage_Log.SuspendLayout();
             contextMenuStrip_log_sys.SuspendLayout();
@@ -207,6 +208,8 @@
             tabPage_GenZong.SuspendLayout();
             contextMenuStrip_lvwOperatorTrackMsg.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -215,11 +218,11 @@
             tabControl1.Controls.Add(tabPage_State);
             tabControl1.Controls.Add(tabPage_Link);
             tabControl1.Controls.Add(tabPage_GenZong);
-            tabControl1.Location = new Point(4, -3);
+            tabControl1.Location = new Point(4, 201);
             tabControl1.Margin = new Padding(3, 4, 3, 4);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1173, 551);
+            tabControl1.Size = new Size(1173, 347);
             tabControl1.TabIndex = 0;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
@@ -231,7 +234,7 @@
             tabPage_Log.Margin = new Padding(3, 4, 3, 4);
             tabPage_Log.Name = "tabPage_Log";
             tabPage_Log.Padding = new Padding(3, 4, 3, 4);
-            tabPage_Log.Size = new Size(1165, 521);
+            tabPage_Log.Size = new Size(1165, 317);
             tabPage_Log.TabIndex = 1;
             tabPage_Log.Text = "日志信息";
             tabPage_Log.UseVisualStyleBackColor = true;
@@ -289,7 +292,7 @@
             // 
             statusStrip_log_sys.ImageScalingSize = new Size(20, 20);
             statusStrip_log_sys.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, sysRev, sysSend, sysCenter, syskafka });
-            statusStrip_log_sys.Location = new Point(3, 491);
+            statusStrip_log_sys.Location = new Point(3, 287);
             statusStrip_log_sys.Name = "statusStrip_log_sys";
             statusStrip_log_sys.Padding = new Padding(1, 0, 16, 0);
             statusStrip_log_sys.RightToLeft = RightToLeft.No;
@@ -334,7 +337,7 @@
             tabPage_State.Margin = new Padding(3, 4, 3, 4);
             tabPage_State.Name = "tabPage_State";
             tabPage_State.Padding = new Padding(3, 4, 3, 4);
-            tabPage_State.Size = new Size(1165, 384);
+            tabPage_State.Size = new Size(1165, 521);
             tabPage_State.TabIndex = 0;
             tabPage_State.Text = "连接状态列表";
             tabPage_State.UseVisualStyleBackColor = true;
@@ -349,7 +352,7 @@
             ClientLogin.Margin = new Padding(3, 4, 3, 4);
             ClientLogin.MultiSelect = false;
             ClientLogin.Name = "ClientLogin";
-            ClientLogin.Size = new Size(1159, 376);
+            ClientLogin.Size = new Size(1159, 513);
             ClientLogin.TabIndex = 0;
             ClientLogin.UseCompatibleStateImageBehavior = false;
             ClientLogin.View = View.Details;
@@ -471,7 +474,7 @@
             tabPage_Link.Margin = new Padding(3, 4, 3, 4);
             tabPage_Link.Name = "tabPage_Link";
             tabPage_Link.Padding = new Padding(3, 4, 3, 4);
-            tabPage_Link.Size = new Size(1165, 384);
+            tabPage_Link.Size = new Size(1165, 521);
             tabPage_Link.TabIndex = 3;
             tabPage_Link.Text = "链接交互日志";
             tabPage_Link.UseVisualStyleBackColor = true;
@@ -486,7 +489,7 @@
             lvwOperatorLineMsg.Margin = new Padding(3, 4, 3, 4);
             lvwOperatorLineMsg.MultiSelect = false;
             lvwOperatorLineMsg.Name = "lvwOperatorLineMsg";
-            lvwOperatorLineMsg.Size = new Size(1159, 376);
+            lvwOperatorLineMsg.Size = new Size(1159, 513);
             lvwOperatorLineMsg.TabIndex = 0;
             lvwOperatorLineMsg.UseCompatibleStateImageBehavior = false;
             lvwOperatorLineMsg.View = View.Details;
@@ -545,7 +548,7 @@
             tabPage_GenZong.Margin = new Padding(3, 4, 3, 4);
             tabPage_GenZong.Name = "tabPage_GenZong";
             tabPage_GenZong.Padding = new Padding(3, 4, 3, 4);
-            tabPage_GenZong.Size = new Size(1165, 384);
+            tabPage_GenZong.Size = new Size(1165, 521);
             tabPage_GenZong.TabIndex = 4;
             tabPage_GenZong.Text = "跟踪信息";
             tabPage_GenZong.UseVisualStyleBackColor = true;
@@ -560,7 +563,7 @@
             lvwOperatorTrackMsg.Location = new Point(3, 4);
             lvwOperatorTrackMsg.Margin = new Padding(3, 4, 3, 4);
             lvwOperatorTrackMsg.Name = "lvwOperatorTrackMsg";
-            lvwOperatorTrackMsg.Size = new Size(1159, 335);
+            lvwOperatorTrackMsg.Size = new Size(1159, 472);
             lvwOperatorTrackMsg.TabIndex = 1;
             lvwOperatorTrackMsg.UseCompatibleStateImageBehavior = false;
             lvwOperatorTrackMsg.View = View.Details;
@@ -621,7 +624,7 @@
             panel2.Controls.Add(txtTrackVeh);
             panel2.Controls.Add(label3);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(3, 339);
+            panel2.Location = new Point(3, 476);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
             panel2.Size = new Size(1159, 41);
@@ -695,11 +698,19 @@
             tmUpdateStatus.Interval = 2000;
             tmUpdateStatus.Tick += tmUpdateStatus_Tick;
             // 
+            // splitContainer1
+            // 
+            splitContainer1.Location = new Point(29, 21);
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Size = new Size(150, 100);
+            splitContainer1.TabIndex = 4;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1170, 544);
+            Controls.Add(splitContainer1);
             Controls.Add(tabControl1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "MainForm";
@@ -723,6 +734,8 @@
             contextMenuStrip_lvwOperatorTrackMsg.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -736,5 +749,6 @@
         private ColumnHeader columnHeader_YunYingName;
         private ToolStripMenuItem 记录传输GPS数据车辆列表ToolStripMenuItem;
         private ColumnHeader columnHeader_SimNo;
+        private SplitContainer splitContainer1;
     }
 }
