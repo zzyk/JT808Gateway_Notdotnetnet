@@ -28,12 +28,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
     <PackageReference Include="NLog.Extensions.Logging" Version="5.3.0" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\..\JT808.Gateway.Client\JT808.Gateway.Client.csproj" />
-    <ProjectReference Include="..\..\JT808.Gateway.WebApiClientTool\JT808.Gateway.WebApiClientTool.csproj" />
-    <ProjectReference Include="..\..\JT808.Gateway\JT808.Gateway.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Update="appsettings.json">

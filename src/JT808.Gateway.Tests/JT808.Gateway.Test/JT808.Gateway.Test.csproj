@@ -22,11 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\JT808.Gateway.WebApiClientTool\JT808.Gateway.WebApiClientTool.csproj" />
-    <ProjectReference Include="..\..\JT808.Gateway\JT808.Gateway.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
