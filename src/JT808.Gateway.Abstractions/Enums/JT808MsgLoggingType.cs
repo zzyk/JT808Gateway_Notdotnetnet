@@ -5,7 +5,7 @@ using System.Text;
 namespace JT808.Gateway.Abstractions.Enums
 {
     /// <summary>
-    /// JT808 消息日志类型
+    /// JT808 消息类型
     /// </summary>
     public enum JT808MsgLoggingType
     {

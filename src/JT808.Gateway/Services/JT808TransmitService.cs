@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Collections.Concurrent;
 using System.Threading;
 using JT808.Gateway.Abstractions.Configurations;
+using JT808.Protocol.Extensions;
 
 namespace JT808.Gateway.Services
 {
@@ -51,7 +52,7 @@ namespace JT808.Gateway.Services
                             {
                                 if (logger.IsEnabled(LogLevel.Debug))
                                 {
-                                    logger.LogDebug($"转发所有数据到该网关{item.Host}");
+                                    logger.LogDebug($"转发所有数据{parameter.Data.ToHexString()}到该网关{item.Host}");
                                 }
                                 await clientAll.SendAsync(parameter.Data,SocketFlags.None);
                             }
@@ -82,7 +83,7 @@ namespace JT808.Gateway.Services
                                 if (client.Connected)
                                 {
                                     if (logger.IsEnabled(LogLevel.Debug))
-                                        logger.LogDebug($"转发{parameter.TerminalNo}到该网关{item.Host}");
+                                        logger.LogDebug($"转发{parameter.TerminalNo}的数据{parameter.Data.ToHexString()}到该网关{item.Host}");
                                     await client.SendAsync(parameter.Data, SocketFlags.None);
                                 }
                                 else
@@ -99,7 +100,7 @@ namespace JT808.Gateway.Services
                             catch (Exception ex)
                             {
                                 channeldic.TryRemove(key, out _);
-                                logger.LogError($"{item.Host},{parameter.TerminalNo}发送数据出现异常：{ex}");
+                                logger.LogError($"{item.Host},{parameter.TerminalNo}发送数据{parameter.Data.ToHexString()}出现异常：{ex}");
                             }
                         }
                     }
@@ -114,7 +115,7 @@ namespace JT808.Gateway.Services
             cts.Cancel();
         }
         /// <summary>
-        /// 初始化调度(分发)客户端
+        /// 初始化转发(分发)客户端
         /// </summary>
         public void InitialDispatcherClient()
         {

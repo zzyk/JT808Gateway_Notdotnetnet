@@ -27,7 +27,7 @@ namespace JT808.Gateway.QueueHosting.Impl
         {
             if (logger.IsEnabled(LogLevel.Debug))
             {
-                logger.LogDebug($"实现消息应答处理,{TerminalNo},{Data.ToHexString()}");
+                logger.LogDebug($"实现下行消息应答处理,{TerminalNo},{Data.ToHexString()}");
             }
             var package = JT808Serializer.Deserialize(Data);
             if (package.Header.MsgId == 0x09999)

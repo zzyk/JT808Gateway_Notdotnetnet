@@ -11,6 +11,9 @@ using JT808.Gateway.HostedServices;
 
 namespace JT808.Gateway.Extensions
 {
+    /// <summary>
+    /// JT808 转发扩展
+    /// </summary>
     public static  class JT808TransmitExtensions
     {
         /// <summary>

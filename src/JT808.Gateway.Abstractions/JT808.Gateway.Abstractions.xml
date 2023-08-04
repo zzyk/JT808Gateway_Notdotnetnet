@@ -82,7 +82,7 @@
         </member>
         <member name="T:JT808.Gateway.Abstractions.Configurations.RemoteServerOptions">
             <summary>
-            远程服务选项
+            远程服务器选项
             </summary>
         </member>
         <member name="T:JT808.Gateway.Abstractions.Dtos.JT808DefaultResultDto">
@@ -169,12 +169,12 @@
         </member>
         <member name="T:JT808.Gateway.Abstractions.Dtos.JT808UnificationSendRequestDto">
             <summary>
-            统一下发请求参数
+            统一发送请求参数
             </summary>
         </member>
         <member name="T:JT808.Gateway.Abstractions.Enums.JT808MsgLoggingType">
             <summary>
-            JT808 消息日志类型
+            JT808 消息类型
             </summary>
         </member>
         <member name="F:JT808.Gateway.Abstractions.Enums.JT808MsgLoggingType.up">
@@ -216,7 +216,7 @@
         </member>
         <member name="M:JT808.Gateway.Abstractions.JT808SessionExtensions.Send(JT808.Gateway.Abstractions.IJT808Session,System.Byte[])">
             <summary>
-            下发消息
+            发送消息
             </summary>
             <param name="session"></param>
             <param name="data"></param>

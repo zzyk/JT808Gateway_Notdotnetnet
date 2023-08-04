@@ -42,6 +42,7 @@ namespace JT808Server.WinForm
                     CaptureMessageProperties = true
                 });
             });
+            
             // 初始化应用
             app.Initialize();
 

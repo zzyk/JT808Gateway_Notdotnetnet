@@ -43,7 +43,7 @@ namespace JT808.Gateway.Abstractions
         }
 
         /// <summary>
-        /// 下发消息
+        /// 发送消息
         /// </summary>
         /// <param name="session"></param>
         /// <param name="data"></param>

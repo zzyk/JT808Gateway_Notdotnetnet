@@ -88,6 +88,11 @@
             <param name="jT808NormalGatewayBuilder"></param>
             <returns></returns>
         </member>
+        <member name="T:JT808.Gateway.Extensions.JT808TransmitExtensions">
+            <summary>
+            JT808 转发扩展
+            </summary>
+        </member>
         <member name="M:JT808.Gateway.Extensions.JT808TransmitExtensions.AddTransmit(JT808.Gateway.Abstractions.IJT808ClientBuilder,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
             转发服务（不同的消费者实例）
@@ -111,7 +116,7 @@
         </member>
         <member name="T:JT808.Gateway.HostedServices.JT808MsgDownLoggingHostedService">
             <summary>
-            JT808 下行消息日志托管服务
+            JT808 下行消息托管服务
             </summary>
         </member>
         <member name="T:JT808.Gateway.HostedServices.JT808MsgDownReplyLoggingHostedService">
@@ -126,7 +131,7 @@
         </member>
         <member name="T:JT808.Gateway.HostedServices.JT808MsgUpLoggingHostedService">
             <summary>
-            JT808 上行消息日志托管服务
+            JT808 上行消息托管服务
             </summary>
         </member>
         <member name="T:JT808.Gateway.HostedServices.JT808ReplyMessageHostedService">
@@ -580,7 +585,7 @@
         </member>
         <member name="M:JT808.Gateway.Services.JT808TransmitService.InitialDispatcherClient">
             <summary>
-            初始化调度(分发)客户端
+            初始化转发(分发)客户端
             </summary>
         </member>
         <member name="M:JT808.Gateway.Services.JT808TransmitService.InitRemoteServsers">

@@ -63,6 +63,7 @@ namespace JT808.Gateway.QueueHosting
                             .AddServerKafkaMsgProducer(hostContext.Configuration)
                             .AddServerKafkaSessionProducer(hostContext.Configuration)
                             .AddServerKafkaMsgReplyConsumer(hostContext.Configuration)
+                            .AddTransmit(hostContext.Configuration)
                             .AddTcp()
                             .AddUdp();
                     //方式2:客户端webapi调用

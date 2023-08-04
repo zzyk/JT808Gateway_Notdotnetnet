@@ -5,7 +5,7 @@ using System.Text;
 namespace JT808.Gateway.Abstractions.Configurations
 {
     /// <summary>
-    /// 远程服务选项
+    /// 远程服务器选项
     /// </summary>
     public class RemoteServerOptions
     {

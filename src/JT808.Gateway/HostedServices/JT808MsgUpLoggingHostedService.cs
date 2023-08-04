@@ -7,7 +7,7 @@ using JT808.Gateway.Abstractions.Enums;
 namespace JT808.Gateway.HostedServices
 {
     /// <summary>
-    /// JT808 上行消息日志托管服务
+    /// JT808 上行消息托管服务
     /// </summary>
     public class JT808MsgUpLoggingHostedService : IHostedService
     {

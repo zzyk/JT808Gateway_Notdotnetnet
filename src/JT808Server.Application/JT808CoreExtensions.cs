@@ -29,7 +29,7 @@ namespace JT808Server.Application
             builder.Services.AddSingleton<JT808ReceiveAtomicCounterService>();
             //builder.Services.AddSingleton<JT808TcpReceiveTimeoutHostedService>();
 
-            ////JT809计数器服务工厂
+            //JT808计数器服务工厂
             //builder.Services.TryAddSingleton<JT808AtomicCounterServiceFactory>();
             ////JT809解码器
             //builder.Services.TryAddScoped<JT808Decoder>();
